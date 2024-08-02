@@ -70,9 +70,9 @@ window.addEventListener("load", () => {
     slidesPerView: 3,
     counts: document.querySelector(".participants  .controls .counts"),
     // dots: document.querySelectorAll(".stages .dots .dot"),
-    // autoplay: true,
-    // interval: 10000,
-    loop: false,
+    autoplay: true,
+    interval: 10000,
+    // loop: true,
   });
 });
 
@@ -140,22 +140,46 @@ const slider = ({
         return;
       }
     }
-    currentSlide = Math.max(
+
+    if (isAutoplay) {
+      currentSlide = calculateAutoplaySlide(direction);
+    } else {
+      currentSlide = calculateNormalSlide(direction);
+    }
+
+    updateSlidePosition();
+    resetAutoplay();
+    updateActiveDot();
+    updateButtonStates();
+    updateCounts();
+    onSlideChange(currentSlide);
+  };
+
+  const calculateAutoplaySlide = (direction) => {
+    if (direction === 1 && currentSlide + slidesPerView >= totalSlides) {
+      return 0;
+    }
+    if (direction === -1 && currentSlide === 0) {
+      return totalSlides - slidesPerView;
+    }
+    return calculateNormalSlide(direction);
+  };
+
+  const calculateNormalSlide = (direction) => {
+    return Math.max(
       0,
       Math.min(
         totalSlides - slidesPerView,
         currentSlide + direction * slidesPerView
       )
     );
+  };
+
+  const updateSlidePosition = () => {
     const slideWidth = 100 / slidesPerView;
     const offset = currentSlide * slideWidth;
     container.style.transform = `translateX(-${offset}%)`;
     container.style.transition = "transform 0.5s ease-in-out";
-    resetAutoplay();
-    updateActiveDot();
-    updateButtonStates();
-    updateCounts();
-    onSlideChange(currentSlide);
   };
   const resetAutoplay = () => {
     if (autoplay) {
