@@ -1,0 +1,171 @@
+ .participants {
+     margin-top: 10px;
+
+     .heading {
+         padding: 20px;
+         margin-top: 100px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         gap: 10px;
+
+         h2 {
+             margin: 0;
+             font-family: 'MerriRegular', sans-serif;
+             line-height: 1.1;
+             font-size: 36px;
+             font-weight: 400;
+             text-transform: uppercase;
+             color: var(--text-black);
+         }
+     }
+
+     & .slider-wrapper {
+         overflow: hidden;
+         padding-inline: 20px;
+         padding-top: 10px;
+
+         .slider {
+             display: grid;
+             grid-auto-flow: column;
+             grid-auto-columns: 100%;
+
+             .slide {
+                 min-height: 388px;
+                 min-width: 335px;
+                 display: flex;
+                 flex-direction: column;
+                 gap: 21px;
+                 align-items: center;
+                 justify-content: center;
+
+                 .image {
+                     padding: 10px;
+                     position: relative;
+                     top: 3px
+                 }
+
+                 .text {
+                     display: flex;
+                     flex-direction: column;
+                     gap: 4px;
+                     align-items: center;
+
+                     &>div {
+                         font-family: 'GolosText', sans-serif;
+                         line-height: 1.2;
+                         color: var(--text-black);
+                     }
+
+                     .title {
+                         opacity: 0.6;
+                         font-size: 20px;
+                         font-weight: 400;
+                     }
+
+                     .name {
+                         font-size: 24px;
+                         font-weight: 600;
+                     }
+                 }
+
+                 button {
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     margin-top: 2px;
+                     padding-inline-start: 11px;
+                     padding-inline-end: 11px;
+                     height: 35px;
+                     font-family: 'GolosText', sans-serif;
+                     line-height: 1.2;
+                     font-size: 16px;
+                     color: var(--text-blue);
+                     border: 1px solid var(--button-blue);
+                     border-radius: 100px;
+                 }
+
+             }
+         }
+     }
+
+     @media screen and (width>1100px) {
+         & {
+             margin-top: 199px;
+         }
+
+         & .heading {
+             flex-direction: row;
+             justify-content: initial;
+             padding: 0;
+             align-items: initial;
+             margin: 0;
+
+             h2 {
+                 display: inline;
+                 font-size: 54px;
+                 line-height: 1.2;
+             }
+
+             & .controls {
+                 margin-left: auto;
+                 margin-top: -2px;
+
+                 .arrow {
+                     min-height: 44px;
+                     min-width: 44px;
+                 }
+
+                 .counts {
+                     font-size: 16px;
+                     font-family: 'GolosText', sans-serif;
+                     font-weight: 400;
+                     line-height: 1.2;
+                     letter-spacing: 1.2px;
+
+                     span {
+                         opacity: 0.6;
+                     }
+                 }
+
+             }
+         }
+
+         & .slider-wrapper {
+             padding: 0;
+             margin-top: 55px;
+             margin-inline: -10px;
+
+             & .slider {
+                 /* gap: 20px; */
+
+                 & .slide {
+                     margin-inline: 10px;
+                     gap: 32px;
+
+                     .image {
+                         padding: 0;
+                         position: relative;
+                         top: 4px;
+                     }
+
+                     .text {
+                         gap: 6px;
+                     }
+
+                     img {
+
+                         width: 320px;
+                     }
+
+                     button {
+                         height: 33px;
+                         padding-block: 13px;
+                         margin-top: -10px;
+                     }
+                 }
+             }
+         }
+     }
+ }
