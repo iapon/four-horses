@@ -1,36 +1,5 @@
 import { slider } from "./slider.js";
-let participants = [
-  {
-    image: "",
-    name: "Хозе-Рауль Капабланка",
-    title: "",
-  },
-  {
-    image: "",
-    name: "Эммануил Ласкер",
-    title: "",
-  },
-  {
-    image: "",
-    name: "Александр Алехин",
-    title: "",
-  },
-  {
-    image: "",
-    name: "Арон Нимцович",
-    title: "",
-  },
-  {
-    image: "",
-    name: "Рихард Рети",
-    title: "",
-  },
-  {
-    image: "",
-    name: "Остап Бендер",
-    title: "Гроссмейстер",
-  },
-];
+import { ticker } from "./ticker.js";
 
 const genSlide = (item) =>
   `<div class="slide">
@@ -45,7 +14,9 @@ const genSlide = (item) =>
     </div>
     <button>Подробнее</button>
   </div>`;
+
 let participantsSlider;
+
 window.addEventListener("load", () => {
   for (const participant of participants) {
     document
@@ -82,20 +53,6 @@ window.addEventListener("load", () => {
   });
 });
 
-function ticker(selector, speed) {
-  document.querySelectorAll(selector).forEach((el) => {
-    const first = el.querySelector(".ticker");
-    first.insertAdjacentHTML("beforeend", first.innerHTML);
-    first.insertAdjacentHTML("beforeend", first.innerHTML);
-    let i = 0;
-
-    setInterval(() => {
-      first.style.left = `-${i}px`;
-      i > first.clientWidth ? (i = 0) : (i += speed);
-    }, 0);
-  });
-}
-
 window.addEventListener("resize", () => {
   if (window.innerWidth > 700 && window.innerWidth <= 1100) {
     participantsSlider.setSlidesPerView(2);
@@ -105,3 +62,36 @@ window.addEventListener("resize", () => {
     participantsSlider.setSlidesPerView(1);
   }
 });
+
+let participants = [
+  {
+    image: "",
+    name: "Хозе-Рауль Капабланка",
+    title: "",
+  },
+  {
+    image: "",
+    name: "Эммануил Ласкер",
+    title: "",
+  },
+  {
+    image: "",
+    name: "Александр Алехин",
+    title: "",
+  },
+  {
+    image: "",
+    name: "Арон Нимцович",
+    title: "",
+  },
+  {
+    image: "",
+    name: "Рихард Рети",
+    title: "",
+  },
+  {
+    image: "",
+    name: "Остап Бендер",
+    title: "Гроссмейстер",
+  },
+];
