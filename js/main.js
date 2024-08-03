@@ -1,3 +1,4 @@
+import { slider } from "./slider.js";
 let participants = [
   {
     image: "",
@@ -67,11 +68,16 @@ window.addEventListener("load", () => {
     slides: document.querySelectorAll(".participants .slider .slide"),
     nextButton: document.querySelector(".participants  .controls .arrow.right"),
     prevButton: document.querySelector(".participants  .controls .arrow.left"),
-    slidesPerView: 3,
+    slidesPerView: (() => {
+      if (window.innerWidth < 700) return 1;
+      if (window.innerWidth < 1100) return 2;
+      return 3;
+    })(),
     counts: document.querySelector(".participants  .controls .counts"),
     // dots: document.querySelectorAll(".stages .dots .dot"),
     autoplay: true,
     interval: 10000,
+    // swipeXTreshold: 50,
     // loop: true,
   });
 });
@@ -89,137 +95,6 @@ function ticker(selector, speed) {
     }, 0);
   });
 }
-
-const slider = ({
-  container,
-  slides,
-  prevButton,
-  nextButton,
-  dots,
-  autoplay = false,
-  interval = 5000,
-  onSlideChange = () => {},
-  loop = true,
-  slidesPerView = 1,
-  counts,
-}) => {
-  let currentSlide = 0;
-  const totalSlides = slides.length;
-  let intervalId;
-
-  const updateActiveDot = () => {
-    if (dots?.length === totalSlides) {
-      dots.forEach((dot, index) =>
-        dot.classList.toggle("active", index === currentSlide)
-      );
-    }
-  };
-
-  const updateButtonStates = () => {
-    if (!loop) {
-      prevButton?.classList.toggle("disabled", currentSlide === 0);
-      nextButton?.classList.toggle(
-        "disabled",
-        currentSlide === totalSlides - slidesPerView
-      );
-    }
-  };
-
-  const updateCounts = () => {
-    if (counts) {
-      counts.textContent = `${currentSlide + slidesPerView}/${totalSlides}`;
-    }
-  };
-
-  const changeSlide = (direction = 0, isAutoplay = false) => {
-    if (!loop && !isAutoplay) {
-      if (
-        (direction === -1 && currentSlide === 0) ||
-        (direction === 1 && currentSlide === totalSlides - slidesPerView)
-      ) {
-        return;
-      }
-    }
-
-    if (isAutoplay) {
-      currentSlide = calculateAutoplaySlide(direction);
-    } else {
-      currentSlide = calculateNormalSlide(direction);
-    }
-
-    updateSlidePosition();
-    resetAutoplay();
-    updateActiveDot();
-    updateButtonStates();
-    updateCounts();
-    onSlideChange(currentSlide);
-  };
-
-  const calculateAutoplaySlide = (direction) => {
-    if (direction === 1 && currentSlide + slidesPerView >= totalSlides) {
-      return 0;
-    }
-    if (direction === -1 && currentSlide === 0) {
-      return totalSlides - slidesPerView;
-    }
-    return calculateNormalSlide(direction);
-  };
-
-  const calculateNormalSlide = (direction) => {
-    return Math.max(
-      0,
-      Math.min(
-        totalSlides - slidesPerView,
-        currentSlide + direction * slidesPerView
-      )
-    );
-  };
-
-  const updateSlidePosition = () => {
-    const slideWidth = 100 / slidesPerView;
-    const offset = currentSlide * slideWidth;
-    container.style.transform = `translateX(-${offset}%)`;
-    container.style.transition = "transform 0.5s ease-in-out";
-  };
-  const resetAutoplay = () => {
-    if (autoplay) {
-      clearInterval(intervalId);
-      intervalId = setInterval(() => changeSlide(1, true), interval);
-    }
-  };
-
-  prevButton?.addEventListener("click", () => changeSlide(-1));
-  nextButton?.addEventListener("click", () => changeSlide(1));
-
-  if (autoplay) {
-    intervalId = setInterval(() => changeSlide(1, true), interval);
-  }
-
-  dots?.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      currentSlide = index;
-      changeSlide();
-    });
-  });
-
-  updateButtonStates();
-  updateActiveDot();
-  updateCounts();
-  return {
-    next: () => changeSlide(1),
-    prev: () => changeSlide(-1),
-    goTo: (index) => changeSlide(index - currentSlide),
-    stop: () => clearInterval(intervalId),
-    setSlidesPerView: (sp) => {
-      if (slidesPerView !== sp) {
-        slidesPerView = sp;
-        currentSlide = 0;
-        changeSlide();
-      }
-    },
-    updateActiveDot,
-  };
-};
 
 window.addEventListener("resize", () => {
   if (window.innerWidth > 700 && window.innerWidth <= 1100) {
