@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
     nextButton: document.querySelector(".participants  .controls .arrow.right"),
     prevButton: document.querySelector(".participants  .controls .arrow.left"),
     slidesPerView: (() => {
-      if (window.innerWidth < 700) return 1;
+      if (window.innerWidth < 768) return 1;
       if (window.innerWidth < 1100) return 2;
       return 3;
     })(),
@@ -54,7 +54,7 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 700 && window.innerWidth <= 1100) {
+  if (window.innerWidth > 768 && window.innerWidth <= 1100) {
     participantsSlider.setSlidesPerView(2);
   } else if (window.innerWidth > 1100) {
     participantsSlider.setSlidesPerView(3);
