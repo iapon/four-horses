@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 2px;
+    padding-bottom: 3px;
+    gap: 5.5px;
+    padding-top: 18px;
+    padding-left: 19px;
+    width: 100%;
+    background-color: var(--bg-beige);
+
+    & .title {
+        font-size: 14.3px;
+        font-weight: 700;
+        line-height: 1.1;
+        text-transform: uppercase;
+        color: var(--text-semi-black);
+    }
+
+    & .logo {
+        display: flex;
+        gap: 2px;
+
+        & img {
+            height: 27px;
+            width: 18.75px;
+        }
+    }
+
+    @media screen and (width>767px) {
+        & {
+            gap: 5.5px;
+            padding-top: 25.7px;
+            padding-left: 73px;
+
+            & .title {
+                font-size: 16.65px;
+            }
+
+            & .logo {
+                display: flex;
+                gap: 1.73px;
+
+                & img {
+                    width: 21.65px;
+                    height: 31.18px;
+                }
+            }
+        }
+
+    }
+}
