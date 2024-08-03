@@ -16,7 +16,7 @@ export const slider = ({
 }) => {
   let currentSlide = 0;
   const totalSlides = realSlidesCount ? realSlidesCount : slides.length;
-
+  console.log(slides);
   let intervalId;
   let touchStartX = 0;
   let touchEndX = 0;

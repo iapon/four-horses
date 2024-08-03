@@ -16,23 +16,7 @@ const genSlide = (item) =>
   </div>`;
 
 let participantsSlider;
-let participantsSliderOpts = {
-  container: document.querySelector(".participants .slider"),
-  slides: document.querySelectorAll(".participants .slider .slide"),
-  nextButton: document.querySelector(".participants  .controls .arrow.right"),
-  prevButton: document.querySelector(".participants  .controls .arrow.left"),
-  slidesPerView: (() => {
-    if (window.innerWidth < 768) return 1;
-    if (window.innerWidth < 1100) return 2;
-    return 3;
-  })(),
-  counts: document.querySelector(".participants  .controls .counts"),
-  // dots: document.querySelectorAll(".stages .dots .dot"),
-  autoplay: true,
-  interval: 10000,
-  // swipeXTreshold: 50,
-  // loop: true,
-};
+
 let topslider;
 let topSliderOpts = {
   container: document.querySelector(".stages .slider"),
@@ -55,6 +39,20 @@ window.addEventListener("load", () => {
   if (window.innerWidth <= 767) {
     topslider = slider(topSliderOpts);
   }
+  let participantsSliderOpts = {
+    container: document.querySelector(".participants .slider"),
+    slides: document.querySelectorAll(".participants .slider .slide"),
+    nextButton: document.querySelector(".participants  .controls .arrow.right"),
+    prevButton: document.querySelector(".participants  .controls .arrow.left"),
+    slidesPerView: (() => {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1100) return 2;
+      return 3;
+    })(),
+    counts: document.querySelector(".participants  .controls .counts"),
+    autoplay: false,
+    interval: 10000,
+  };
   participantsSlider = slider(participantsSliderOpts);
 });
 

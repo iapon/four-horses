@@ -68,20 +68,34 @@ body {
     flex-direction: column;
     /* background-color: var(--bg-beige); */
     overflow-x: hidden;
+    /*  */
 }
 
+@media screen and (width>767px) {
+    body {
+        align-items: center;
+    }
+}
 
 .main {
     overflow-x: hidden;
+
+
 
     & .wrap {
         background-color: var(--bg-beige);
     }
 
     @media screen and (width>767px) {
+        max-width: 1366px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
         & .container {
             padding-inline: 72px;
         }
+
     }
 }
 
@@ -179,7 +193,7 @@ footer {
         .participants {
             & .slider-wrapper {
                 & .slider {
-                    grid-auto-columns: 33%;
+                    grid-auto-columns: 33.33%;
                 }
             }
         }
