@@ -12,7 +12,7 @@
     & .ticker {
         position: relative;
         padding-block-start: 10px;
-        padding-block-end: 10px;
+        padding-block-end: 9px;
         font-family: 'MerriRegular', sans-serif;
         line-height: 1.29;
         font-size: 16px;
@@ -28,10 +28,14 @@
 }
 
 #ticker-top {
-    margin: 0;
+    margin: 1px;
 }
 
 @media screen and (width > 767px) {
+    #ticker-top {
+        margin: 0px;
+    }
+
     .ticker-wrap {
         height: 60px;
 

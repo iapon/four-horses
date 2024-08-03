@@ -1,6 +1,7 @@
 export const slider = ({
   container,
   slides,
+  realSlidesCount,
   prevButton,
   nextButton,
   dots,
@@ -14,7 +15,8 @@ export const slider = ({
   swipeYTreshold = 50,
 }) => {
   let currentSlide = 0;
-  const totalSlides = slides.length;
+  const totalSlides = realSlidesCount ? realSlidesCount : slides.length;
+
   let intervalId;
   let touchStartX = 0;
   let touchEndX = 0;
@@ -103,31 +105,6 @@ export const slider = ({
     }
   };
 
-  prevButton?.addEventListener("click", () => changeSlide(-1));
-  nextButton?.addEventListener("click", () => changeSlide(1));
-
-  if (autoplay) {
-    intervalId = setInterval(() => changeSlide(1, true), interval);
-  }
-
-  dots?.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      currentSlide = index;
-      changeSlide();
-    });
-  });
-
-  container.addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  });
-
-  container.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    touchEndY = e.changedTouches[0].clientY;
-    handleSwipe();
-  });
-
   const handleSwipe = () => {
     const deltaX = touchStartX - touchEndX;
     const deltaY = Math.abs(touchStartY - touchEndY);
@@ -140,6 +117,67 @@ export const slider = ({
       }
     }
   };
+
+  const handlePrevClick = () => changeSlide(-1);
+  const handleNextClick = () => changeSlide(1);
+  const handleDotClick = (index) => () => {
+    currentSlide = index;
+    changeSlide();
+  };
+  const handleTouchStart = (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  };
+  const handleTouchEnd = (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    touchEndY = e.changedTouches[0].clientY;
+    handleSwipe();
+  };
+
+  const addEventListeners = () => {
+    prevButton?.addEventListener("click", handlePrevClick);
+    nextButton?.addEventListener("click", handleNextClick);
+
+    dots?.forEach((dot, index) => {
+      dot.addEventListener("click", handleDotClick(index));
+    });
+
+    container.addEventListener("touchstart", handleTouchStart);
+    container.addEventListener("touchend", handleTouchEnd);
+  };
+
+  const removeEventListeners = () => {
+    prevButton?.removeEventListener("click", handlePrevClick);
+    nextButton?.removeEventListener("click", handleNextClick);
+
+    dots?.forEach((dot, index) => {
+      dot.removeEventListener("click", handleDotClick(index));
+    });
+
+    container.removeEventListener("touchstart", handleTouchStart);
+    container.removeEventListener("touchend", handleTouchEnd);
+  };
+
+  const destroy = () => {
+    clearInterval(intervalId);
+    removeEventListeners();
+    container.style.transform = "";
+    container.style.transition = "";
+    if (dots) {
+      dots.forEach((dot) => dot.classList.remove("active"));
+    }
+    if (counts) {
+      counts.textContent = "";
+    }
+    if (prevButton) prevButton.classList.remove("disabled");
+    if (nextButton) nextButton.classList.remove("disabled");
+  };
+
+  addEventListeners();
+
+  if (autoplay) {
+    intervalId = setInterval(() => changeSlide(1, true), interval);
+  }
 
   updateButtonStates();
   updateActiveDot();
@@ -158,5 +196,6 @@ export const slider = ({
       }
     },
     updateActiveDot,
+    destroy,
   };
 };

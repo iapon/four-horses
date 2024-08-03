@@ -108,45 +108,48 @@
 
         & .schedule-items {
             display: flex;
-            flex-direction: column;
             padding-inline: 20px;
-            /* padding-top: 20px; */
             margin-top: 6px;
-            padding-bottom: 2px;
-            gap: 17px;
+            gap: 15px;
+            flex-direction: column;
 
             .schedule-item {
                 display: flex;
                 flex-direction: row;
-                flex-wrap: wrap;
-                gap: 12px;
                 border-bottom: 1px solid gray;
-                padding-bottom: 14px;
+                gap: 12px;
+                padding-bottom: 16px;
+                flex-wrap: wrap;
 
                 .item-title,
                 .item-value {
                     font-family: 'GolosText', sans-serif;
                     font-size: 20px;
-                    line-height: 1.2;
                     color: var(--text-black);
 
                 }
 
                 .item-title {
                     opacity: 0.7;
+
                 }
 
                 .item-value {
                     font-weight: 600;
+                    font-size: 20px;
+                    line-height: 1.2;
+                    color: var(--text-black);
+                    font-family: 'GolosText', sans-serif;
 
-                    span {
-                        font-family: 'GolosText', sans-serif;
-                        font-size: 20px;
-                        line-height: 1.2;
-                        letter-spacing: 0.25;
-                        color: var(--text-black);
+                    span:not(.price) {
+                        letter-spacing: 0.1;
                         text-decoration-line: line-through;
                         text-decoration-color: var(--text-red);
+
+                    }
+
+                    .price {
+                        padding-left: 6px;
                     }
                 }
             }
@@ -169,6 +172,7 @@
                 height: 250px;
 
                 img {
+                    left: 17px;
                     width: 100%;
                     height: 100%;
                 }
@@ -193,73 +197,112 @@
         }
 
         .games-schedule {
+            gap: 0;
+            padding: 0;
             margin-top: 32px;
             grid-template-areas:
                 "a b"
-                "a c";
+                "a c"
+                "a d";
 
             & .image {
+                margin-left: -28px;
+                margin-top: -31px;
+
                 img {
-                    left: -28px;
-                    top: -20px;
-                    max-width: 529px;
+                    max-width: 600px;
                 }
 
             }
 
             & .text {
                 font-size: 36px;
+                padding-inline-start: 15px;
+                padding-block-start: 9px;
             }
 
             & .contact-info {
-                margin-top: 8px;
+                grid-area: d;
+                margin-top: 30px;
                 font-family: 'GolosText', sans-serif;
-                font-size: 18px;
+                font-size: 20px;
                 font-weight: 400;
                 line-height: 1.2;
-                padding-inline: 20px;
+                padding-inline: 16px;
                 color: var(--text-blue);
-                /* margin-top: 24px; */
 
             }
 
             @media screen and (width>1100px) {
                 & .schedule-items {
+                    padding-inline-start: 15px;
+                    gap: 0;
+                    margin-top: 22px;
 
-                    /* margin-bottom: 16px; */
+                    /* .schedule-item:first-child,
+                    .schedule-item:last-child {
+                        height: auto;
+
+                    } */
+
+                    /* .schedule-item:last-child {
+                        padding-top: 16px;
+                    }
+
+                    .schedule-item:first-child {
+                        padding-bottom: 16px;
+                    } */
+
                     .schedule-item:not(:last-child) {
                         border-bottom: 2px solid var(--border-gray);
                     }
 
-                    & .schedule-item:last-child .item-title,
-                    & .schedule-item:last-child .item-value {
-                        padding-block-end: 0;
-                    }
 
                     .schedule-item {
-                        padding: 0;
-                        /* padding: 0; */
-                        /* flex-direction: row; */
+                        gap: 0;
                         display: grid;
-                        grid-template-columns: repeat(2, 1fr);
+                        grid-template-columns: 306px 398px;
                         border-bottom: unset;
+                        padding-bottom: 0;
+                        height: 54px;
 
                         & .item-title,
                         & .item-value {
-                            padding-block-start: 8px;
-                            padding-block-end: 16px;
+                            display: flex;
+                            justify-content: start;
+                            align-items: center;
+                            height: 100%;
+                            width: 100%;
+                            font-size: 20px;
                         }
 
                         & .item-title {
-                            height: 100%;
+                            max-width: 310px;
                             border-inline-end: 2px solid var(--border-gray);
                         }
 
+                        & .item-value {
+                            padding-inline-start: 17px;
+
+
+                            span:not(.price) {
+                                letter-spacing: 0.1;
+                                text-decoration-line: line-through;
+                                text-decoration-color: var(--text-red);
+                            }
+
+                            .price {
+                                padding-left: 11px;
+                            }
+                        }
 
                     }
 
                 }
+
             }
+
+
         }
     }
 }
