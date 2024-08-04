@@ -3,6 +3,9 @@ export const ticker = (selector, speed) => {
     const first = el.querySelector(".ticker");
     first.insertAdjacentHTML("beforeend", first.innerHTML);
     first.insertAdjacentHTML("beforeend", first.innerHTML);
+    first.insertAdjacentHTML("beforeend", first.innerHTML);
+    first.insertAdjacentHTML("beforeend", first.innerHTML);
+    first.insertAdjacentHTML("beforeend", first.innerHTML);
     let i = 0;
 
     setInterval(() => {

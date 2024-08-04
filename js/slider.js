@@ -1,13 +1,14 @@
 export const slider = ({
   container,
   slides,
+  // это костыль
   realSlidesCount,
   prevButton,
   nextButton,
   dots,
   autoplay = false,
   interval = 5000,
-  onSlideChange = () => {},
+  onSlideChange = () => { },
   loop = true,
   slidesPerView = 1,
   counts,
@@ -16,7 +17,6 @@ export const slider = ({
 }) => {
   let currentSlide = 0;
   const totalSlides = realSlidesCount ? realSlidesCount : slides.length;
-  console.log(slides);
   let intervalId;
   let touchStartX = 0;
   let touchEndX = 0;
@@ -157,7 +157,7 @@ export const slider = ({
     container.removeEventListener("touchstart", handleTouchStart);
     container.removeEventListener("touchend", handleTouchEnd);
   };
-
+  // много лишней логики только для того чтобы сделать destroy(), бесит
   const destroy = () => {
     clearInterval(intervalId);
     removeEventListeners();
@@ -184,6 +184,7 @@ export const slider = ({
   updateCounts();
 
   return {
+    // не знаю зачем возвращаю это всё, но возможно когда нибудь поюзаю
     next: () => changeSlide(1),
     prev: () => changeSlide(-1),
     goTo: (index) => changeSlide(index - currentSlide),

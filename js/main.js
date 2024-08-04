@@ -1,19 +1,7 @@
 import { slider } from "./slider.js";
 import { ticker } from "./ticker.js";
 
-const genSlide = (item) =>
-  `<div class="slide">
-    <div class="image">
-        <img src="${item.image ? item.image : "/images/man.png"}" alt="">
-    </div>
-    <div class="text">
-        <div class="name">${item.name}</div>
-        <div class="title">${
-          item.title ? item.title : "Чемпион мира по шахматам"
-        }</div>
-    </div>
-    <button>Подробнее</button>
-  </div>`;
+
 
 let participantsSlider;
 
@@ -24,57 +12,58 @@ let topSliderOpts = {
   nextButton: document.querySelector(".stages  .controls .arrow.right"),
   prevButton: document.querySelector(".stages  .controls .arrow.left"),
   dots: document.querySelectorAll(".stages .dots .dot"),
-  // autoplay: true,
-  // interval: 10000,
   realSlidesCount: 5,
   loop: false,
 };
 window.addEventListener("load", () => {
   for (const participant of participants) {
     document
-      .querySelector(".participants  > .slider-wrapper .slider")
+      .querySelector(".participants-inner  > .slider-wrapper .slider")
       .insertAdjacentHTML("beforeend", genSlide(participant));
   }
   ticker(".ticker-wrap", 0.3);
-  if (window.innerWidth <= 767) {
+  if (window.innerWidth <= 1300) {
     topslider = slider(topSliderOpts);
   }
   let participantsSliderOpts = {
-    container: document.querySelector(".participants .slider"),
-    slides: document.querySelectorAll(".participants .slider .slide"),
-    nextButton: document.querySelector(".participants  .controls .arrow.right"),
-    prevButton: document.querySelector(".participants  .controls .arrow.left"),
+    container: document.querySelector(".participants-inner .slider"),
+    slides: document.querySelectorAll(".participants-inner .slider .slide"),
+    nextButton: document.querySelector(".participants-inner  .controls .arrow.right"),
+    prevButton: document.querySelector(".participants-inner  .controls .arrow.left"),
+    // корректное отборажение для разных устройств на старте
     slidesPerView: (() => {
       if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 1100) return 2;
+      if (window.innerWidth < 1200) return 2;
       return 3;
     })(),
-    counts: document.querySelector(".participants  .controls .counts"),
-    autoplay: false,
-    interval: 10000,
+    counts: document.querySelector(".participants-inner  .controls .counts"),
+    loop: false,
   };
   participantsSlider = slider(participantsSliderOpts);
 });
 
 window.addEventListener("resize", () => {
-  if (window.innerWidth <= 768) {
+  if (window.innerWidth <= 1300) {
     if (!topslider) {
       topslider = slider(topSliderOpts);
     }
     participantsSlider.setSlidesPerView(1);
     return;
   }
-  if (topslider) {
-    topslider.destroy();
-    topslider = null;
-  }
   if (window.innerWidth <= 1100) {
     participantsSlider.setSlidesPerView(2);
     return;
   }
+  if (window.innerWidth > 1300) {
+    if (topslider) {
+      topslider.destroy();
+      topslider = null;
+    }
+  }
   participantsSlider.setSlidesPerView(3);
 });
 
+// генерим слыйды 
 let participants = [
   {
     image: "",
@@ -107,3 +96,15 @@ let participants = [
     title: "Гроссмейстер",
   },
 ];
+const genSlide = (item) =>
+  `<div class="slide">
+    <div class="image">
+        <img src="${item.image ? item.image : "/images/man.webp"}" alt="">
+    </div>
+    <div class="text">
+        <div class="name">${item.name}</div>
+        <div class="title">${item.title ? item.title : "Чемпион мира по шахматам"
+  }</div>
+    </div>
+    <button>Подробнее</button>
+  </div>`;

@@ -2,307 +2,273 @@
     margin-top: 24px;
     display: flex;
     flex-direction: column;
-
+  
     .lection {
-        display: grid;
-        grid-template-areas:
-            'a'
-            'b'
-            'c'
-        ;
-        gap: 24px;
-        padding-block: 24px;
-        padding-inline: 20px;
-
-        & .text:first-child {
-            grid-area: a;
+      display: grid;
+      grid-template-areas:
+        "a"
+        "b"
+        "c";
+      gap: 24px;
+      padding-block: 24px;
+      padding-inline: 20px;
+  
+      & .text:first-child {
+        grid-area: a;
+      }
+  
+      & .text.button:last-child {
+        grid-area: c;
+      }
+  
+      .image {
+        img {
+          position: relative;
+          left: -1px;
+          grid-area: b;
         }
-
-        & .text.button:last-child {
-            grid-area: c;
+      }
+  
+      & .text.desktop {
+        display: none;
+      }
+  
+      & .text {
+        font-family: "MerriRegular", sans-serif;
+        font-size: 28px;
+        line-height: 1.35;
+        color: var(--text-black);
+        text-transform: uppercase;
+  
+        & span {
+          font-family: "MerriBold", sans-serif;
+          font-weight: 700;
+          color: var(--text-red);
         }
-
-        .image {
-            img {
-                position: relative;
-                left: -1px;
-                grid-area: b;
-            }
-        }
-
-        & .text.desktop {
-            display: none;
-        }
-
-        & .text {
-            font-family: 'MerriRegular', sans-serif;
-            font-size: 28px;
-            line-height: 1.35;
-            color: var(--text-black);
-            text-transform: uppercase;
-
-            & span {
-                font-family: 'MerriBold', sans-serif;
-                font-weight: 700;
-                color: var(--text-red);
-
-            }
-        }
+      }
     }
-
+  
     & .games-schedule {
-        display: grid;
-        grid-template-areas:
-            "a"
-            "b"
-            "c";
-        gap: 17px;
-
-        & .image {
-            /* padding: 0; */
-            grid-area: a;
-            position: relative;
-
-            img {
-                position: relative;
-                top: 11px;
-                left: -0.5px;
-                max-width: 375px;
-
-            }
+      display: grid;
+      grid-template-areas:
+        "a"
+        "b"
+        "c";
+      gap: 17px;
+  
+      & .image {
+        grid-area: a;
+        position: relative;
+  
+        img {
+          position: relative;
+          top: 11px;
+          left: -0.5px;
+          max-width: 375px;
         }
-
-        & .schedule-items {
-            grid-area: c;
+      }
+  
+      & .schedule-items {
+        grid-area: c;
+      }
+  
+      & .text {
+        padding-block: 20px;
+        padding-inline: 20px;
+        grid-area: b;
+        font-family: "MerriRegular", sans-serif;
+        font-size: 28px;
+        line-height: 1.35;
+        color: var(--text-black);
+        text-transform: uppercase;
+  
+        & span {
+          font-family: "MerriBold", sans-serif;
+          font-weight: 700;
+          color: var(--text-red);
         }
-
-        & .text {
-            padding-block: 20px;
-            padding-inline: 20px;
-            grid-area: b;
-            font-family: 'MerriRegular', sans-serif;
-            font-size: 28px;
-            line-height: 1.35;
+      }
+  
+      & .contact-info {
+        margin-top: 7px;
+        font-family: "GolosText", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.2;
+        padding-inline: 20px;
+        color: var(--text-blue);
+      }
+  
+      & .schedule-items {
+        display: flex;
+        padding-inline: 20px;
+        margin-top: 6px;
+        gap: 15px;
+        flex-direction: column;
+  
+        .schedule-item {
+          display: flex;
+          flex-direction: row;
+          border-bottom: 1px solid gray;
+          gap: 12px;
+          padding-bottom: 16px;
+          flex-wrap: wrap;
+  
+          .item-title,
+          .item-value {
+            font-family: "GolosText", sans-serif;
+            font-size: 20px;
             color: var(--text-black);
-            text-transform: uppercase;
-
-            & span {
-                font-family: 'MerriBold', sans-serif;
-                font-weight: 700;
-                color: var(--text-red);
-
-            }
-        }
-
-        & .contact-info {
-            margin-top: 7px;
-            font-family: 'GolosText', sans-serif;
-            font-size: 18px;
-            font-weight: 400;
+          }
+  
+          .item-title {
+            opacity: 0.7;
+          }
+  
+          .item-value {
+            font-weight: 600;
+            font-size: 20px;
             line-height: 1.2;
-            padding-inline: 20px;
-            color: var(--text-blue);
-            /* margin-top: 24px; */
-
-        }
-
-        & .schedule-items {
-            display: flex;
-            padding-inline: 20px;
-            margin-top: 6px;
-            gap: 15px;
-            flex-direction: column;
-
-            .schedule-item {
-                display: flex;
-                flex-direction: row;
-                border-bottom: 1px solid gray;
-                gap: 12px;
-                padding-bottom: 16px;
-                flex-wrap: wrap;
-
-                .item-title,
-                .item-value {
-                    font-family: 'GolosText', sans-serif;
-                    font-size: 20px;
-                    color: var(--text-black);
-
-                }
-
-                .item-title {
-                    opacity: 0.7;
-
-                }
-
-                .item-value {
-                    font-weight: 600;
-                    font-size: 20px;
-                    line-height: 1.2;
-                    color: var(--text-black);
-                    font-family: 'GolosText', sans-serif;
-
-                    span:not(.price) {
-                        letter-spacing: 0.1;
-                        text-decoration-line: line-through;
-                        text-decoration-color: var(--text-red);
-
-                    }
-
-                    .price {
-                        padding-left: 6px;
-                    }
-                }
+            color: var(--text-black);
+            font-family: "GolosText", sans-serif;
+  
+            span:not(.price) {
+              letter-spacing: 0.1;
+              text-decoration-line: line-through;
+              text-decoration-color: var(--text-red);
             }
+  
+            .price {
+              padding-left: 6px;
+            }
+          }
         }
+      }
     }
-
+  
     @media screen and (width>767px) {
-        .lection {
-            margin-top: 40px;
-            padding-inline: 0;
-            grid-template-areas: 'a b';
-            justify-content: unset;
-            max-width: 1366px;
-            gap: 64px;
-            padding-block-start: 16px;
-
-            .image {
-                grid-area: b;
-                width: 394px;
-                height: 250px;
-
-                img {
-                    left: 17px;
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            & .text {
-                display: none;
-            }
-
-            & .text.desktop {
-                max-width: 764px;
-                display: block;
-                font-size: 36px;
-                padding-block-start: 28px;
-
-                & span {
-                    font-weight: 700;
-
-                }
-            }
-
+      .lection {
+        margin-top: 40px;
+        padding-inline: 0;
+        grid-template-areas: "a b";
+        justify-content: unset;
+        max-width: 1366px;
+        gap: 64px;
+        padding-block-start: 16px;
+  
+        .image {
+          grid-area: b;
+          width: 394px;
+          height: 250px;
+  
+          img {
+            width: 100%;
+            height: 100%;
+          }
         }
-
-        .games-schedule {
+  
+        & .text {
+          display: none;
+        }
+  
+        & .text.desktop {
+          max-width: 764px;
+          display: block;
+          font-size: 36px;
+          padding-block-start: 28px;
+  
+          & span {
+            font-weight: 700;
+          }
+        }
+      }
+  
+      .games-schedule {
+        gap: 0;
+        padding: 0;
+        margin-top: 32px;
+        grid-template-areas:
+          "a b"
+          "a c"
+          "a d";
+  
+        & .image {
+          margin-left: -28px;
+          margin-top: -31px;
+  
+          img {
+            max-width: 600px;
+          }
+        }
+  
+        & .text {
+          font-size: 36px;
+          padding-inline-start: 15px;
+          padding-block-start: 9px;
+        }
+  
+        & .contact-info {
+          grid-area: d;
+          margin-top: 30px;
+          font-family: "GolosText", sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 1.2;
+          padding-inline: 16px;
+          color: var(--text-blue);
+        }
+  
+        @media screen and (width>1100px) {
+          & .schedule-items {
+            padding-inline-start: 15px;
             gap: 0;
-            padding: 0;
-            margin-top: 32px;
-            grid-template-areas:
-                "a b"
-                "a c"
-                "a d";
-
-            & .image {
-                margin-left: -28px;
-                margin-top: -31px;
-
-                img {
-                    max-width: 600px;
-                }
-
+            margin-top: 22px;
+  
+  
+            .schedule-item:not(:last-child) {
+              border-bottom: 2px solid var(--border-gray);
             }
-
-            & .text {
-                font-size: 36px;
-                padding-inline-start: 15px;
-                padding-block-start: 9px;
-            }
-
-            & .contact-info {
-                grid-area: d;
-                margin-top: 30px;
-                font-family: 'GolosText', sans-serif;
+  
+            .schedule-item {
+              gap: 0;
+              display: grid;
+              grid-template-columns: 306px 398px;
+              border-bottom: unset;
+              padding-bottom: 0;
+              height: 54px;
+  
+              & .item-title,
+              & .item-value {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                height: 100%;
+                width: 100%;
                 font-size: 20px;
-                font-weight: 400;
-                line-height: 1.2;
-                padding-inline: 16px;
-                color: var(--text-blue);
-
-            }
-
-            @media screen and (width>1100px) {
-                & .schedule-items {
-                    padding-inline-start: 15px;
-                    gap: 0;
-                    margin-top: 22px;
-
-                    /* .schedule-item:first-child,
-                    .schedule-item:last-child {
-                        height: auto;
-
-                    } */
-
-                    /* .schedule-item:last-child {
-                        padding-top: 16px;
-                    }
-
-                    .schedule-item:first-child {
-                        padding-bottom: 16px;
-                    } */
-
-                    .schedule-item:not(:last-child) {
-                        border-bottom: 2px solid var(--border-gray);
-                    }
-
-
-                    .schedule-item {
-                        gap: 0;
-                        display: grid;
-                        grid-template-columns: 306px 398px;
-                        border-bottom: unset;
-                        padding-bottom: 0;
-                        height: 54px;
-
-                        & .item-title,
-                        & .item-value {
-                            display: flex;
-                            justify-content: start;
-                            align-items: center;
-                            height: 100%;
-                            width: 100%;
-                            font-size: 20px;
-                        }
-
-                        & .item-title {
-                            max-width: 310px;
-                            border-inline-end: 2px solid var(--border-gray);
-                        }
-
-                        & .item-value {
-                            padding-inline-start: 17px;
-
-
-                            span:not(.price) {
-                                letter-spacing: 0.1;
-                                text-decoration-line: line-through;
-                                text-decoration-color: var(--text-red);
-                            }
-
-                            .price {
-                                padding-left: 11px;
-                            }
-                        }
-
-                    }
-
+              }
+  
+              & .item-title {
+                max-width: 310px;
+                border-inline-end: 2px solid var(--border-gray);
+              }
+  
+              & .item-value {
+                padding-inline-start: 17px;
+  
+                span:not(.price) {
+                  letter-spacing: 0.1;
+                  text-decoration-line: line-through;
+                  text-decoration-color: var(--text-red);
                 }
-
+  
+                .price {
+                  padding-left: 11px;
+                }
+              }
             }
-
-
+          }
         }
+      }
     }
-}
+  }
+  

@@ -4,50 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Уездный город</title>
-    <!-- <link rel="stylesheet" href="/css/hero.css">
-    <link rel="stylesheet" href="/css/header.css"> -->
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
     <header class="header">
-        <span class="logo">
-            <img src="/images/header-horse.png" alt="фигура лошади">
-            <img src="/images/header-horse.png" alt="фигура лошади">
-            <img src="/images/header-horse.png" alt="фигура лошади">
-            <img src="/images/header-horse.png" alt="фигура лошади">
-        </span>
-        <span class="title">
-            Клуб<br>четырех коней
-        </span>
+        <div class="container">
+            <span class="logo">
+                <img src="/images/header-horse.webp" alt="фигура лошади">
+                <img src="/images/header-horse.webp" alt="фигура лошади">
+                <img src="/images/header-horse.webp" alt="фигура лошади">
+                <img src="/images/header-horse.webp" alt="фигура лошади">
+            </span>
+            <span class="title">
+                Клуб<br>четырех коней
+            </span>
+        </div>
     </header>
-    <main class="main">
-        <div class="wrap container">
-            <div class="hero">
-                <div class="heading">
-                    <h1>Превратите уездный город
-                        <span>в столицу</span>
-                        <span>земного шара</span>
-                </div>
-                </h1>
+    <div class="hero-img-container">
+        <picture class="hero-img">
+            <source media="(max-width: 375px)" srcset="/images/mobile-hero.webp">
+            <source media="(min-width: 768px)" srcset="/images/header-bg-img.webp">
+            <img src="/images/header-bg-img.webp">
+        </picture>
 
-                <p class="description">Оплатите взнос на&nbsp;телеграммы для&nbsp;организации Международного
-                    васюкинского турнира по&nbsp;шахматам</p>
-                <div class="buttons">
-                    <button class="button">Поддержать шахматную мысль</button>
-                    <button class="button">Подробнее о&nbsp;турнире</button>
+
+
+    </div>
+    <main class="main">
+        <div class="wrap">
+            <div class="container">
+                <div class="hero">
+                    <div class="heading">
+                        <h1>Превратите уездный город
+                            <span>в столицу</span>
+                            <span>земного шара</span>
+                    </div>
+                    </h1>
+
+                    <p class="description">Оплатите взнос на&nbsp;телеграммы для&nbsp;организации Международного
+                        васюкинского турнира по&nbsp;шахматам</p>
+                    <div class="buttons">
+                        <button class="button"><a href="#advertisement">Поддержать шахматную мысль</a></button>
+                        <button class="button"><a href="#games-schedule">Подробнее о&nbsp;турнире</a></button>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="ticker-top" class="ticker-wrap">
             <div class="ticker">
-                <img src="/images/dot.png" alt=""> Дело помощи утопающим — дело рук самих утопающих! <img
-                    src="/images/dot.png" alt="">
-                Шахматы двигают вперёд не только культуру, но и экономику! <img src="/images/dot.png" alt="">
+                <img src="/images/dot.webp" alt=""> Дело помощи утопающим — дело рук самих утопающих! <img
+                    src="/images/dot.webp" alt="">
+                Шахматы двигают вперёд не только культуру, но и экономику! <img src="/images/dot.webp" alt="">
                 Лёд тронулся, господа присяжные заседатели!
             </div>
         </div>
-        <div class="advertisement container">
+        <div id="advertisement" class="advertisement container">
             <div class="lection">
                 <div class="text desktop">
                     Чтобы поддержать Международный васюкинский турнир посетите лекцию на&nbsp;тему:
@@ -57,16 +69,16 @@
                     Чтобы поддержать Международный васюкинский турнир
                 </div>
                 <div class="image">
-                    <img src="/images/tornament.png" alt="">
+                    <img src="/images/tornament.webp" alt="">
                 </div>
                 <div class="text">посетите лекцию на тему: <span>«Плодотворная дебютная идея»</span></div>
             </div>
-            <div class="games-schedule">
+            <div id="games-schedule" class="games-schedule">
                 <div class="text">и Сеанс <span>одновременной игры в&nbsp;шахматы на&nbsp;160&nbsp;досках</span>
                     гроссмейстера О.&nbsp;Бендера
                 </div>
                 <div class="image">
-                    <img src="/images/grossmaster.png" alt="изображение шахматиста">
+                    <img src="/images/grossmaster.webp" alt="изображение шахматиста">
                 </div>
                 <div class="schedule-items">
                     <div class="schedule-item">
@@ -108,51 +120,51 @@
 
             </div>
             <div class="image">
-                <img src="/images/biplane.png" alt="">
+                <img src="/images/biplane.webp" alt="">
             </div>
             <div class="slider-wrapper">
                 <div class="slider">
                     <div class="slide" data-index="0">
-                        <div class="wrap">
+                        <div class="slide-wrap">
                             <div class="num">1</div>
                             <div class="text">Строительство железнодорожной магистрали Москва-Васюки</div>
                         </div>
                     </div>
                     <div class="slide" data-index="1">
-                        <div class="wrap">
+                        <div class="slide-wrap">
                             <div class="num">2</div>
                             <div class="text">Открытие фешенебельной гостиницы «Проходная пешка» и других небоскрёбов
                             </div>
                         </div>
                     </div>
                     <div class="slide" data-index="2">
-                        <div class="wrap">
+                        <div class="slide-wrap">
                             <div class="num">3</div>
                             <div class="text">Поднятие сельского хозяйства в&nbsp;радиусе на&nbsp;тысячу километров:
                                 производство овощей, фруктов, икры, шоколадных конфет</div>
                         </div>
                     </div>
                     <div class="slide" data-index="3">
-                        <div class="wrap">
+                        <div class="slide-wrap">
                             <div class="num">4</div>
                             <div class="text">Строительство дворца для&nbsp;турнира</div>
                         </div>
                     </div>
                     <div class="slide" data-index="4">
-                        <div class="wrap">
+                        <div class="slide-wrap">
                             <div class="num">5</div>
                             <div class="text">Размещение гаражей для&nbsp;гостевого&nbsp; автотранспорта</div>
                         </div>
                     </div>
                     <div class="slide" data-index="5">
-                        <div class="wrap">
+                        <div class="slide-wrap">
                             <div class="num">6</div>
                             <div class="text">Постройка сверхмощной радиостанции для передачи всему миру сенсационных
                                 результатов</div>
                         </div>
                     </div>
                     <div class="slide" data-index="6">
-                        <div class="wrap">
+                        <div class="slide-wrap">
                             <div class="num">7</div>
                             <div class="text">Создание аэропорта «Большие&nbsp;Васюки» с&nbsp;регулярным отправлением
                                 почтовых самолётов и&nbsp;дирижаблей во&nbsp;все&nbsp;концы света, включая Лос-Анжелос
@@ -162,7 +174,7 @@
                 </div>
                 <div class="controls">
                     <div class="arrow left">
-                        <img src="/images/arrow.png" alt="">
+                        <img src="/images/arrow.webp" alt="">
                     </div>
                     <div class="dots">
                         <div class="dot"></div>
@@ -173,46 +185,51 @@
 
                     </div>
                     <div class="arrow right">
-                        <img src="/images/arrow.png" alt="">
+                        <img src="/images/arrow.webp" alt="">
                     </div>
                 </div>
             </div>
         </div>
         <div class="participants container">
-            <div class="heading">
-                <h2>Участники турнира</h2>
+            <div class="participants-inner">
+                <div class="heading">
+                    <h2>Участники турнира</h2>
+                </div>
                 <div class="controls">
                     <div class="arrow left">
-                        <img src="/images/arrow.png" alt="">
+                        <img src="/images/arrow.webp" alt="">
                     </div>
                     <div class="counts">
                         1/<span>6</span>
                     </div>
                     <div class="arrow right">
-                        <img src="/images/arrow.png" alt="">
+                        <img src="/images/arrow.webp" alt="">
                     </div>
                 </div>
-            </div>
-            <div class="slider-wrapper">
-                <div class="slider">
-                </div>
+                <div class="slider-wrapper">
+                    <div class="slider">
+                    </div>
 
+                </div>
             </div>
         </div>
-        <div id="bottom-ticker" class="ticker-wrap">
-            <div class="ticker">
-                <img src="/images/dot.png" alt=""> Дело помощи утопающим — дело рук самих утопающих! <img
-                    src="/images/dot.png" alt="">
-                Шахматы двигают вперёд не только культуру, но и экономику! <img src="/images/dot.png" alt="">
-                Лёд тронулся, господа присяжные заседатели!
-            </div>
-        </div>
+
     </main>
+    <div id="bottom-ticker" class="ticker-wrap">
+        <div class="ticker">
+            <img src="/images/dot.webp" alt=""> Дело помощи утопающим — дело рук самих утопающих! <img
+                src="/images/dot.webp" alt="">
+            Шахматы двигают вперёд не только культуру, но и экономику! <img src="/images/dot.webp" alt="">
+            Лёд тронулся, господа присяжные заседатели!
+        </div>
+    </div>
     <footer>
-        <p>Все персонажи, события и цитаты являются вымышленными <br>и не принадлежат создателям сайта. <br>С
-            подробностями
-            можно познакомиться <br>в главе XXXIV романа Ильи Ильфа <br>и Евгения Петрова «Двенадцать стульев».
-        </p>
+        <div class="container">
+            <p>Все&nbsp;персонажи, события и&nbsp;цитаты являются вымышленными и&nbsp;не&nbsp;принадлежат создателям
+                сайта. С&nbsp;подробностями можно познакомиться в&nbsp;главе XXXIV романа Ильи Ильфа и&nbsp;Евгения
+                Петрова «Двенадцать стульев».
+            </p>
+        </div>
     </footer>
     <script type="module" src="/js/slider.js"></script>
     <script type="module" src="/js/ticker.js"></script>
