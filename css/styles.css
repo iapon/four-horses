@@ -7,17 +7,17 @@
 
 @font-face {
   font-family: GolosText;
-  src: url(/fonts/GolosText-VariableFont_wght.ttf);
+  src: url(fonts/GolosText-VariableFont_wght.ttf);
 }
 
 @font-face {
   font-family: MerriRegular;
-  src: url(/fonts/Merriweather-Regular.ttf);
+  src: url(fonts/Merriweather-Regular.ttf);
 }
 
 @font-face {
   font-family: MerriBold;
-  src: url(/fonts/Merriweather-Bold.ttf);
+  src: url(fonts/Merriweather-Bold.ttf);
 }
 
 :root {
