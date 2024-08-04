@@ -8,7 +8,7 @@ export const slider = ({
   dots,
   autoplay = false,
   interval = 5000,
-  onSlideChange = () => { },
+  onSlideChange = () => {},
   loop = true,
   slidesPerView = 1,
   counts,
@@ -48,7 +48,7 @@ export const slider = ({
   };
 
   const changeSlide = (direction = 0, isAutoplay = false) => {
-    if (!loop && !isAutoplay) {
+    if (!loop || !isAutoplay) {
       if (
         (direction === -1 && currentSlide === 0) ||
         (direction === 1 && currentSlide === totalSlides - slidesPerView)
