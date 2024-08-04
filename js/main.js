@@ -99,7 +99,7 @@ let participants = [
 const genSlide = (item) =>
   `<div class="slide">
     <div class="image">
-        <img src="${item.image ? item.image : "/images/man.webp"}" alt="">
+        <img src="${item.image ? item.image : "images/man.webp"}" alt="">
     </div>
     <div class="text">
         <div class="name">${item.name}</div>
