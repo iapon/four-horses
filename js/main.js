@@ -42,7 +42,6 @@ window.addEventListener("load", () => {
       return 3;
     })(),
     counts: document.querySelector(".participants-inner  .controls .counts"),
-    loop: false,
   };
   participantsSlider = slider(participantsSliderOpts);
 });
