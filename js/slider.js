@@ -48,7 +48,7 @@ export const slider = ({
   };
 
   const changeSlide = (direction = 0, isAutoplay = false) => {
-    if (!loop || !isAutoplay) {
+    if (!loop && !isAutoplay) {
       if (
         (direction === -1 && currentSlide === 0) ||
         (direction === 1 && currentSlide === totalSlides - slidesPerView)
@@ -56,13 +56,11 @@ export const slider = ({
         return;
       }
     }
-
-    if (isAutoplay) {
-      currentSlide = calculateAutoplaySlide(direction);
+    if (loop || isAutoplay) {
+      currentSlide = calculateLoopSlide(direction);
     } else {
       currentSlide = calculateNormalSlide(direction);
     }
-
     updateSlidePosition();
     resetAutoplay();
     updateActiveDot();
@@ -71,7 +69,7 @@ export const slider = ({
     onSlideChange(currentSlide);
   };
 
-  const calculateAutoplaySlide = (direction) => {
+  const calculateLoopSlide = (direction) => {
     if (direction === 1 && currentSlide + slidesPerView >= totalSlides) {
       return 0;
     }
