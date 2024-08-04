@@ -1,8 +1,6 @@
 import { slider } from "./slider.js";
 import { ticker } from "./ticker.js";
 
-
-
 let participantsSlider;
 
 let topslider;
@@ -28,8 +26,15 @@ window.addEventListener("load", () => {
   let participantsSliderOpts = {
     container: document.querySelector(".participants-inner .slider"),
     slides: document.querySelectorAll(".participants-inner .slider .slide"),
-    nextButton: document.querySelector(".participants-inner  .controls .arrow.right"),
-    prevButton: document.querySelector(".participants-inner  .controls .arrow.left"),
+    nextButton: document.querySelector(
+      ".participants-inner  .controls .arrow.right"
+    ),
+    prevButton: document.querySelector(
+      ".participants-inner  .controls .arrow.left"
+    ),
+    loop: true,
+    autoplay: true,
+    interval: 4000,
     // корректное отборажение для разных устройств на старте
     slidesPerView: (() => {
       if (window.innerWidth < 768) return 1;
@@ -63,7 +68,7 @@ window.addEventListener("resize", () => {
   participantsSlider.setSlidesPerView(3);
 });
 
-// генерим слыйды 
+// генерим слыйды
 let participants = [
   {
     image: "",
@@ -103,8 +108,9 @@ const genSlide = (item) =>
     </div>
     <div class="text">
         <div class="name">${item.name}</div>
-        <div class="title">${item.title ? item.title : "Чемпион мира по шахматам"
-  }</div>
+        <div class="title">${
+          item.title ? item.title : "Чемпион мира по шахматам"
+        }</div>
     </div>
     <button>Подробнее</button>
   </div>`;
