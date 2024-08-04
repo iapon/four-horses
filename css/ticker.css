@@ -30,12 +30,16 @@
 #ticker-top {
     margin: 1px;
 }
+#bottom-ticker{
 
+}
 @media screen and (width > 767px) {
     #ticker-top {
         margin: 0px;
     }
-
+    #bottom-ticker{
+        margin-top: 140px;
+    }
     .ticker-wrap {
         height: 60px;
 
